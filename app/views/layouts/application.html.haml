@@ -3,8 +3,21 @@
   %head
     %title Itinere
     = stylesheet_link_tag 'application', media: 'all'
-    %link{ rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', integrity: 'sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', crossorigin: 'anonymous' }
+    = stylesheet_link_tag 'bootstrap.min', media: 'all'
     = javascript_include_tag 'application'
     %script{ src: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', integrity: 'sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS', crossorigin: 'anonymous' }
     = csrf_meta_tags
-  %body= yield
+  %body
+    .navbar.navbar-default
+      .container
+        .navbar-header
+          %span.navbar-brand Itinere
+          %button.navbar-toggle{ type: "button", data: { toggle: "collapse", target: "#navbar-main" } }
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+        .navbar-collapse.collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li= link_to 'Sign Up', root_path
+    .container
+      = yield

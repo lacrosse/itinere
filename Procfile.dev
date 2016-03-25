@@ -1,1 +1,2 @@
 pg: postgres -D /usr/local/var/postgres
+rails: bundle exec spring rails s
