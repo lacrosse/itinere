@@ -62,7 +62,9 @@ CREATE TABLE trip_plans (
     local_contact character varying,
     managing_agency character varying,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    alternate_id character varying NOT NULL,
+    published boolean DEFAULT false NOT NULL
 );
 
 
@@ -156,6 +158,13 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: index_trip_plans_on_alternate_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_trip_plans_on_alternate_id ON trip_plans USING btree (alternate_id);
+
+
+--
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -189,4 +198,8 @@ INSERT INTO schema_migrations (version) VALUES ('20160325190208');
 INSERT INTO schema_migrations (version) VALUES ('20160325191726');
 
 INSERT INTO schema_migrations (version) VALUES ('20160325210821');
+
+INSERT INTO schema_migrations (version) VALUES ('20160325215201');
+
+INSERT INTO schema_migrations (version) VALUES ('20160325220207');
 

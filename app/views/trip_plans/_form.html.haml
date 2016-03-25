@@ -12,7 +12,12 @@
       %legend Basic
       .form-group
         = f.label :title, class: 'col-lg-2 control-label'
-        .col-lg-10= f.text_field :title, placeholder: 'Across the Universe', class: 'form-control'
+        .col-lg-10
+          = f.text_field :title, placeholder: 'Across the Universe', class: 'form-control'
+          .checkbox
+            = f.label :published do
+              = f.check_box :published
+              Published?
     %fieldset
       %legend Emergency Info
       .form-group
@@ -49,5 +54,4 @@
         = f.label :managing_agency, class: 'col-lg-2 control-label'
         .col-lg-10= f.text_field :managing_agency, placeholder: 'NSW Parks and Wildlife http://www.nationalparks.nsw.gov.au', class: 'form-control'
       .form-group
-        .col-lg-offset-2.col-lg-10
-          = f.submit class: 'btn btn-primary'
+        .col-lg-offset-2.col-lg-10= f.submit class: 'btn btn-primary'

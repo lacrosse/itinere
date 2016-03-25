@@ -2,53 +2,28 @@
 
 %h1
   = @trip_plan.title
-  = link_to 'Edit', edit_trip_plan_path(@trip_plan), class: 'btn btn-info'
+  .btn-group{ role: 'group' }
+    = link_to edit_trip_plan_path(@trip_plan), class: 'btn btn-info' do
+      %i.fa.fa-pencil-square-o
+      Edit
+    - if @trip_plan.published?
+      = link_to '#', class: 'btn btn-warning', data: { toggle: 'modal', target: '#modal-share' } do
+        %i.fa.fa-share-square-o
+        Share
 
-%table.table.table-striped{ style: 'width: auto;' }
-  %thead
-    %tr
-      %th{ colspan: 2 } Emergency Info
-  %tbody
-    %tr
-      %td Who's Going:
-      %td= md_line @trip_plan.who_is_going
-    %tr
-      %td Contact(s):
-      %td= md_line @trip_plan.contacts
-    %tr
-      %td Start Location:
-      %td todo
-    %tr
-      %td Finish Location:
-      %td todo
-    %tr
-      %td Planned Route:
-      %td= md_line @trip_plan.planned_route_url
-    %tr
-      %td Transportation
-      %td= md_line @trip_plan.transportation
-    %tr
-      %td Expected Departure
-      %td= @trip_plan.expected_departure
-    %tr
-      %td Expected Return
-      %td= @trip_plan.expected_return
-    %tr
-      %td Freak Out Time
-      %td= md_line @trip_plan.freak_out_time
-    %tr
-      %td Communications
-      %td= md_line @trip_plan.communications
-    %tr
-      %td inReach Map
-      %td
-        - if @trip_plan.inreach_map.present?
-          = md_line @trip_plan.inreach_map
-        - else
-          —omitted—
-    %tr
-      %td Local Contact
-      %td= md_line @trip_plan.local_contact
-    %tr
-      %td Managing Agency
-      %td= md_line @trip_plan.managing_agency
+= render partial: 'trip_plan', locals: { trip_plan: @trip_plan }
+
+#modal-share.modal.fade{ tabindex: '-1', role: 'dialog', aria: { labelledby: 'myModalLabel' } }
+  .modal-dialog{ role: 'document' }
+    .modal-content
+      .modal-header
+        %button.close{ type: 'button', data: { dismiss: 'modal', aria: { label: 'Close' } } }
+          %span{ aria: { hidden: 'true' } } &times;
+        %h4.modal-title Share #{@trip_plan.title}
+      .modal-body
+        %p Share this link:
+        %form
+          .form-group
+            %input{ class: 'form-control', value: published_trip_plan_url(id: @trip_plan.alternate_id) }
+      .modal-footer
+        %button.btn.btn-warning{ type: 'button', data: { dismiss: 'modal' } } Thanks!

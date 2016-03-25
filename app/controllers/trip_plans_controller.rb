@@ -51,7 +51,8 @@ class TripPlansController < ApplicationController
   def trip_plan_params
     params.require(:trip_plan).permit(
       *%i(
-        title who_is_going contacts planned_route_url transportation
+        title published
+        who_is_going contacts planned_route_url transportation
         expected_departure expected_return freak_out_time communications
         inreach_map local_contact managing_agency
       )

@@ -5,6 +5,7 @@
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1' }
     = stylesheet_link_tag 'application', media: 'all'
     = stylesheet_link_tag 'bootstrap.min', media: 'all'
+    = stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
     = javascript_include_tag 'application'
     %script{ src: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', integrity: 'sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS', crossorigin: 'anonymous' }
     = csrf_meta_tags
@@ -20,12 +21,21 @@
         #navbar-main.navbar-collapse.collapse
           - if signed_in?
             %ul.nav.navbar-nav
-              %li= link_to 'Trip plans', trip_plans_path
+              %li
+                = link_to trip_plans_path do
+                  %i.fa.fa-car
+                  Trip Plans
           %ul.nav.navbar-nav.navbar-right
             - if signed_in?
-              %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
+              %li
+                = link_to destroy_user_session_path, method: :delete do
+                  %i.fa.fa-sign-out
+                  Sign Out
             - else
-              %li= link_to 'Sign In', new_user_session_path
+              %li
+                = link_to new_user_session_path do
+                  %i.fa.fa-sign-in
+                  Sign In
               %li= link_to 'Sign Up', new_user_registration_path
     .container
       = flash_messages

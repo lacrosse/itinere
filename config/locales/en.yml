@@ -26,6 +26,9 @@ en:
       trip_plan: Trip Plan
     attributes:
       trip_plan:
+        title: Title
+        published: Published?
+
         who_is_going: Who's Going
         contacts: Contact(s)
         planned_route_url: Planned Route
