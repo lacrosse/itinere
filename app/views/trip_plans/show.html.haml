@@ -1,6 +1,8 @@
 = link_to '← Trip Plans', trip_plans_path
 
-%h1= @trip_plan.title
+%h1
+  = @trip_plan.title
+  = link_to 'Edit', edit_trip_plan_path(@trip_plan), class: 'btn btn-info'
 
 %table.table.table-striped{ style: 'width: auto;' }
   %thead

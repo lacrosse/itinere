@@ -21,3 +21,19 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    models:
+      trip_plan: Trip Plan
+    attributes:
+      trip_plan:
+        who_is_going: Who's Going
+        contacts: Contact(s)
+        planned_route_url: Planned Route
+        transportation: Transportation
+        expected_departure: Expected Departure
+        expected_return: Expected Return
+        freak_out_time: Freak Out Time
+        communications: Communications
+        inreach_map: inReach Map
+        local_contact: Local Contact
+        managing_agency: Managing Agency

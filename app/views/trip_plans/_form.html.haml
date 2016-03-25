@@ -1,0 +1,53 @@
+- if @trip_plan.errors.present?
+  .alert.alert-danger{ role: 'alert' }
+    - @trip_plan.errors.full_messages.each do |message|
+      = message
+
+.alert.alert-info
+  This form supports Markdown. You can insert links and emphasize text!
+
+.well
+  = form_for @trip_plan, html: { class: 'form-horizontal' } do |f|
+    %fieldset
+      %legend Basic
+      .form-group
+        = f.label :title, class: 'col-lg-2 control-label'
+        .col-lg-10= f.text_field :title, placeholder: 'Across the Universe', class: 'form-control'
+    %fieldset
+      %legend Emergency Info
+      .form-group
+        = f.label :who_is_going, class: 'col-lg-2 control-label'
+        .col-lg-10= f.text_field :who_is_going, placeholder: 'Bob, Mary, Scott', class: 'form-control'
+      .form-group
+        = f.label :contacts, class: 'col-lg-2 control-label'
+        .col-lg-10= f.text_field :contacts, placeholder: 'Abby email@email.com', class: 'form-control'
+      .form-group
+        = f.label :planned_route_url, class: 'col-lg-2 control-label'
+        .col-lg-10= f.text_field :planned_route_url, placeholder: 'https://gaiagps.com/datasummary/track/73ba5421-0bde-4c54-beaf-e695807c5c65', class: 'form-control'
+      .form-group
+        = f.label :transportation, class: 'col-lg-2 control-label'
+        .col-lg-10= f.text_field :transportation, placeholder: 'White SUV Europcar Rental', class: 'form-control'
+      .form-group
+        = f.label :expected_departure, class: 'col-lg-2 control-label'
+        .col-lg-10= f.text_field :expected_departure, placeholder: 'Saturday March 05 2016  19:00 Sydney Time', class: 'form-control'
+      .form-group
+        = f.label :expected_return, class: 'col-lg-2 control-label'
+        .col-lg-10= f.text_field :expected_return, placeholder: 'Monday March 07 2016  19:00 Sydney Time', class: 'form-control'
+      .form-group
+        = f.label :freak_out_time, class: 'col-lg-2 control-label'
+        .col-lg-10= f.text_field :freak_out_time, placeholder: '16 hours after expected return', class: 'form-control'
+      .form-group
+        = f.label :communications, class: 'col-lg-2 control-label'
+        .col-lg-10= f.text_field :communications, placeholder: 'Via e-mail: Start and end of trip, as well as end of day camp sites.', class: 'form-control'
+      .form-group
+        = f.label :inreach_map, 'inReach Map', class: 'col-lg-2 control-label'
+        .col-lg-10= f.text_field :inreach_map, class: 'form-control'
+      .form-group
+        = f.label :local_contact, class: 'col-lg-2 control-label'
+        .col-lg-10= f.text_field :local_contact, placeholder: 'Abby email@email.com', class: 'form-control'
+      .form-group
+        = f.label :managing_agency, class: 'col-lg-2 control-label'
+        .col-lg-10= f.text_field :managing_agency, placeholder: 'NSW Parks and Wildlife http://www.nationalparks.nsw.gov.au', class: 'form-control'
+      .form-group
+        .col-lg-offset-2.col-lg-10
+          = f.submit class: 'btn btn-primary'

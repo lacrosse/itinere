@@ -60,7 +60,9 @@ CREATE TABLE trip_plans (
     communications character varying,
     inreach_map character varying,
     local_contact character varying,
-    managing_agency character varying
+    managing_agency character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -185,4 +187,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160325184319');
 INSERT INTO schema_migrations (version) VALUES ('20160325190208');
 
 INSERT INTO schema_migrations (version) VALUES ('20160325191726');
+
+INSERT INTO schema_migrations (version) VALUES ('20160325210821');
 
