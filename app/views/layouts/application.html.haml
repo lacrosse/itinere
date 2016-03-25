@@ -11,13 +11,21 @@
     .navbar.navbar-default
       .container
         .navbar-header
-          %span.navbar-brand Itinere
+          = link_to 'Itinere', root_path, class: 'navbar-brand'
           %button.navbar-toggle{ type: "button", data: { toggle: "collapse", target: "#navbar-main" } }
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
         .navbar-collapse.collapse
+          - if signed_in?
+            %ul.nav.navbar-nav
+              %li= link_to 'Trip plans', trip_plans_path
           %ul.nav.navbar-nav.navbar-right
-            %li= link_to 'Sign Up', root_path
+            - if signed_in?
+              %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
+            - else
+              %li= link_to 'Sign In', new_user_session_path
+              %li= link_to 'Sign Up', new_user_registration_path
     .container
+      = flash_messages
       = yield
