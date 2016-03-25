@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :trip_plans, only: [:index]
+  resources :trip_plans, only: [:index, :show, :new]
 end

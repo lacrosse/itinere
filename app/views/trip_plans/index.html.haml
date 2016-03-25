@@ -1,4 +1,9 @@
 %h1 Your trip plans
 
-- @trip_plans.each do |trip_plan|
-  %p= trip_plan.inspect
+%hr
+
+- if @trip_plans.present?
+  - @trip_plans.each do |trip_plan|
+    %p= link_to trip_plan.title, trip_plan_path(trip_plan)
+- else
+  %p You have no trip plans. #{link_to 'Create one today', new_trip_plan_path}!

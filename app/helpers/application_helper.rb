@@ -1,4 +1,18 @@
 module ApplicationHelper
+  def md(text)
+    Redcarpet::Markdown.new(
+      REDCARPET,
+      autolink: true
+    ).render(text || '').html_safe
+  end
+
+  def md_line(text)
+    Redcarpet::Markdown.new(
+      REDCARPET_LINE,
+      autolink: true
+    ).render(text || '').html_safe
+  end
+
   def flash_messages
     flash.select { |k, v| %w(alert notice).include?(k) && v.present? }.map do |type, message|
       container_class =

@@ -43,6 +43,47 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: trip_plans; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE trip_plans (
+    id integer NOT NULL,
+    user_id integer,
+    title character varying NOT NULL,
+    planned_route_url character varying,
+    who_is_going character varying,
+    contacts character varying,
+    transportation character varying,
+    expected_departure character varying,
+    expected_return character varying,
+    freak_out_time character varying,
+    communications character varying,
+    inreach_map character varying,
+    local_contact character varying,
+    managing_agency character varying
+);
+
+
+--
+-- Name: trip_plans_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE trip_plans_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: trip_plans_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE trip_plans_id_seq OWNED BY trip_plans.id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -86,7 +127,22 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY trip_plans ALTER COLUMN id SET DEFAULT nextval('trip_plans_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: trip_plans_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY trip_plans
+    ADD CONSTRAINT trip_plans_pkey PRIMARY KEY (id);
 
 
 --
@@ -125,4 +181,8 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 SET search_path TO "$user", public;
 
 INSERT INTO schema_migrations (version) VALUES ('20160325184319');
+
+INSERT INTO schema_migrations (version) VALUES ('20160325190208');
+
+INSERT INTO schema_migrations (version) VALUES ('20160325191726');
 
