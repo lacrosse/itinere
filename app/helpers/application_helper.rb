@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def title(text)
+    content_for(:title, text)
+  end
+
   def md(text)
     Redcarpet::Markdown.new(
       REDCARPET,

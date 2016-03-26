@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title Itinere
+    %title Itinere#{content_for?(:title) ? ' • ' + content_for(:title) : '' }
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1' }
     %meta{ charset: 'utf-8' }
     = stylesheet_link_tag 'application', media: 'all'
