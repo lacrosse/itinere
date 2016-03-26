@@ -1,48 +1,62 @@
-%table.table.table-striped{ style: 'width: auto;' }
-  %thead
-    %tr
-      %th{ colspan: 2 } Emergency Info
-  %tbody
-    %tr
-      %td Who's Going:
-      %td= md_line trip_plan.who_is_going
-    %tr
-      %td Contact(s):
-      %td= md_line trip_plan.contacts
-    %tr
-      %td Start Location:
-      %td todo
-    %tr
-      %td Finish Location:
-      %td todo
-    %tr
-      %td Planned Route:
-      %td= md_line trip_plan.planned_route_url
-    %tr
-      %td Transportation
-      %td= md_line trip_plan.transportation
-    %tr
-      %td Expected Departure
-      %td= trip_plan.expected_departure
-    %tr
-      %td Expected Return
-      %td= trip_plan.expected_return
-    %tr
-      %td Freak Out Time
-      %td= md_line trip_plan.freak_out_time
-    %tr
-      %td Communications
-      %td= md_line trip_plan.communications
-    %tr
-      %td inReach Map
-      %td
-        - if trip_plan.inreach_map.present?
-          = md_line trip_plan.inreach_map
-        - else
-          —omitted—
-    %tr
-      %td Local Contact
-      %td= md_line trip_plan.local_contact
-    %tr
-      %td Managing Agency
-      %td= md_line trip_plan.managing_agency
+- title @trip_plan.title
+
+.row
+  .col-lg-8
+    %h1= @trip_plan.title
+    %table.table.table-striped.table-hover
+      %thead
+        %tr
+          %th{ colspan: 2 } Emergency Info
+      %tbody
+        %tr
+          %td Who's Going:
+          %td= md_line trip_plan.who_is_going
+        %tr
+          %td Contact(s):
+          %td= md_line trip_plan.contacts
+        %tr
+          %td Start Location:
+          %td todo
+        %tr
+          %td Finish Location:
+          %td todo
+        %tr
+          %td Planned Route:
+          %td= md_line trip_plan.planned_route_url
+        %tr
+          %td Transportation:
+          %td= md_line trip_plan.transportation
+        %tr
+          %td Expected Departure:
+          %td= trip_plan.expected_departure
+        %tr
+          %td Expected Return:
+          %td= trip_plan.expected_return
+        %tr
+          %td Freak Out Time:
+          %td= md_line trip_plan.freak_out_time
+        %tr
+          %td Communications:
+          %td= md_line trip_plan.communications
+        %tr
+          %td inReach Map:
+          %td
+            - if trip_plan.inreach_map.present?
+              = md_line trip_plan.inreach_map
+            - else
+              —omitted—
+        %tr
+          %td Local Contact:
+          %td= md_line trip_plan.local_contact
+        %tr
+          %td Managing Agency:
+          %td= md_line trip_plan.managing_agency
+        %tr
+          %td{ colspan: 2 }
+      - if trip_plan.big_picture_planning.present?
+        %thead
+          %tr
+            %th{ colspan: 2 } Big Picture Planning
+        %tbody
+          %tr
+            %td{ colspan: 2 }= md trip_plan.big_picture_planning

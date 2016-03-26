@@ -6,10 +6,9 @@
 .well
   = form_for @trip_plan, html: { class: 'form-horizontal' } do |f|
     %fieldset
-      %legend Basic
+      %legend Title
       .form-group
-        = f.label :title, class: 'col-lg-2 control-label'
-        .col-lg-10
+        .col-lg-12
           = f.text_field :title, placeholder: 'Across the Universe', class: 'form-control'
           .checkbox
             = f.label :published do
@@ -52,5 +51,14 @@
       .form-group
         = f.label :managing_agency, class: 'col-lg-2 control-label'
         .col-lg-10= f.text_field :managing_agency, placeholder: 'NSW Parks and Wildlife http://www.nationalparks.nsw.gov.au', class: 'form-control'
+    %fieldset
+      %legend Big Picture Planning
       .form-group
-        .col-lg-offset-2.col-lg-10= f.submit class: 'btn btn-primary'
+        .col-lg-12
+          = f.text_area :big_picture_planning,
+            placeholder: 'Trip Goals: Hiking by headlamp, light a campfire, two night sleeping experience.',
+            class: 'form-control', rows: 5
+    %fieldset
+      .form-group
+        .col-lg-12
+          = f.submit class: 'btn btn-primary btn-lg btn-block'

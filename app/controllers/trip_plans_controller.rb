@@ -61,7 +61,7 @@ class TripPlansController < ApplicationController
         title published
         who_is_going contacts planned_route_url transportation
         expected_departure expected_return freak_out_time communications
-        inreach_map local_contact managing_agency
+        inreach_map local_contact managing_agency big_picture_planning
       )
     )
   end

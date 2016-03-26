@@ -64,7 +64,8 @@ CREATE TABLE trip_plans (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     alternate_id character varying NOT NULL,
-    published boolean DEFAULT false NOT NULL
+    published boolean DEFAULT false NOT NULL,
+    big_picture_planning text
 );
 
 
@@ -202,4 +203,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160325210821');
 INSERT INTO schema_migrations (version) VALUES ('20160325215201');
 
 INSERT INTO schema_migrations (version) VALUES ('20160325220207');
+
+INSERT INTO schema_migrations (version) VALUES ('20160326214934');
 
