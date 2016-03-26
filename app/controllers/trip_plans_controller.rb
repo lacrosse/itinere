@@ -1,5 +1,6 @@
 class TripPlansController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user_or_guest
+
   before_action :set_trip_plans
   before_action :set_trip_plan, only: [:show, :edit, :update, :destroy]
 
@@ -41,7 +42,7 @@ class TripPlansController < ApplicationController
   private
 
   def set_trip_plans
-    @trip_plans = current_user.trip_plans
+    @trip_plans = current_user_or_guest.trip_plans
   end
 
   def set_trip_plan

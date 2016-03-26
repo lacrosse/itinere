@@ -3,7 +3,7 @@ class TripPlan < ActiveRecord::Base
 
   validates :title, presence: true
 
-  after_create :generate_alternate_id
+  before_create :generate_alternate_id
 
   scope :published, -> { where published: true }
 

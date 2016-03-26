@@ -3,9 +3,6 @@
     - @trip_plan.errors.full_messages.each do |message|
       = message
 
-.alert.alert-info
-  This form supports Markdown. You can insert links and emphasize text!
-
 .well
   = form_for @trip_plan, html: { class: 'form-horizontal' } do |f|
     %fieldset
@@ -18,6 +15,8 @@
             = f.label :published do
               = f.check_box :published
               Published?
+    .alert.alert-info
+      This form supports Markdown. You can insert links and emphasize text!
     %fieldset
       %legend Emergency Info
       .form-group

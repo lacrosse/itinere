@@ -6,10 +6,13 @@
 
 %hr
 
+- unless user_signed_in?
+  .alert.alert-info
+    You are not signed in. #{link_to 'Sign up', new_user_registration_path} for Itinere right now to save your trips!
 - if @trip_plans.present?
   - @trip_plans.each do |trip_plan|
     %p
       = link_to trip_plan.title, trip_plan_path(trip_plan)
       (#{trip_plan.published? ? 'published, ' : ''}updated #{distance_of_time_in_words_to_now(trip_plan.updated_at)} ago)
 - else
-  %p You have no trip plans. #{link_to 'Create one today', new_trip_plan_path}!
+  .alert.alert-success You have no trip plans.

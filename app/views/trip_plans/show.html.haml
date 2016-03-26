@@ -24,6 +24,6 @@
         %p Share this link:
         %form
           .form-group
-            %input{ class: 'form-control', value: published_trip_plan_url(id: @trip_plan.alternate_id) }
+            %input{ class: 'form-control', value: published_trip_plan_url(id: @trip_plan.alternate_id), disabled: true }
       .modal-footer
         %button.btn.btn-warning{ type: 'button', data: { dismiss: 'modal' } } Thanks!
