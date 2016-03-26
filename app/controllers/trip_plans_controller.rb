@@ -9,6 +9,12 @@ class TripPlansController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "itinere_trip_plan_#{@trip_plan.id}", formats: [:html]
+      end
+    end
   end
 
   def new

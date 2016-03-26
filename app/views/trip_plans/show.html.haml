@@ -10,6 +10,9 @@
       = link_to '#', class: 'btn btn-warning', data: { toggle: 'modal', target: '#modal-share' } do
         %i.fa.fa-share-square-o
         Share
+    = link_to trip_plan_path(@trip_plan, format: :pdf), class: 'btn btn-danger', target: '_blank' do
+      %i.fa.fa-file-pdf-o
+      Export PDF
 
 = render partial: 'trip_plan', locals: { trip_plan: @trip_plan }
 
