@@ -1,0 +1,42 @@
+%thead
+  %tr
+    %th{ colspan: 2 }
+      Planned Itinerary -
+      Day #{index + 1}/#{trip_day.trip_plan.trip_days.count} -
+      #{trip_day.date.strftime('%b %e')}
+
+      .btn-group.pull-right
+        = link_to edit_trip_plan_trip_day_path(trip_plan_id: trip_day.trip_plan_id, id: trip_day.id), class: 'btn btn-info btn-xs' do
+          %i.fa.fa-fw.fa-pencil-square-o
+          Edit
+        = link_to trip_plan_trip_day_path(trip_plan_id: trip_day.trip_plan_id, id: trip_day.id), class: 'btn btn-primary btn-xs', method: :delete, data: { confirm: 'Are you sure?' } do
+          %i.fa.fa-fw.fa-trash
+          Delete
+%tbody
+  %tr
+    %td Planned Start:
+    %td= md_line trip_day.planned_start
+  %tr
+    %td Planned Finish:
+    %td= md_line trip_day.planned_finish
+  %tr
+    %td Daylight:
+    %td= trip_day.daylight
+  %tr
+    %td Moonlight:
+    %td= trip_day.moonlight
+  %tr
+    %td Water Availability:
+    %td= md_line trip_day.water_availability
+  %tr
+    %td Hammock trees:
+    %td= md_line trip_day.hammock_trees
+  %tr
+    %td Fishing:
+    %td= md_line trip_day.fishing
+  %tr
+    %td Expected weather:
+    %td= md trip_day.weather
+  %tr
+    %td Geocache(s):
+    %td= md_line trip_day.geocaches

@@ -3,6 +3,10 @@ module ApplicationHelper
     content_for(:title, text)
   end
 
+  def footer_js
+    content_for(:footer_js, yield)
+  end
+
   def md(text)
     Redcarpet::Markdown.new(
       REDCARPET,

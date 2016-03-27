@@ -3,14 +3,14 @@
     = link_to '← Trip Plans', trip_plans_path
     .btn-group.pull-right{ role: 'group' }
       = link_to edit_trip_plan_path(@trip_plan), class: 'btn btn-info' do
-        %i.fa.fa-pencil-square-o
+        %i.fa.fa-fw.fa-pencil-square-o
         Edit
       - if @trip_plan.published?
         = link_to '#', class: 'btn btn-warning', data: { toggle: 'modal', target: '#modal-share' } do
-          %i.fa.fa-share-square-o
+          %i.fa.fa-fw.fa-share-square-o
           Share
       = link_to trip_plan_path(@trip_plan, format: :pdf), class: 'btn btn-danger', target: '_blank' do
-        %i.fa.fa-file-pdf-o
+        %i.fa.fa-fw.fa-file-pdf-o
         Export PDF
 
 = render partial: 'trip_plan', locals: { trip_plan: @trip_plan }

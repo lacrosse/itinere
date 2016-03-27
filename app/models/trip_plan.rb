@@ -9,19 +9,19 @@ class TripPlan < ActiveRecord::Base
   scope :published, -> { where published: true }
 
   def start_location_lat
-    start_location.split(/,\s*/)[0]
+    start_location&.split(/,\s*/)&.[](0)
   end
 
   def start_location_lon
-    start_location.split(/,\s*/)[1]
+    start_location&.split(/,\s*/)&.[](1)
   end
 
   def finish_location_lat
-    finish_location.split(/,\s*/)[0]
+    finish_location&.split(/,\s*/)&.[](0)
   end
 
   def finish_location_lon
-    finish_location.split(/,\s*/)[1]
+    finish_location&.split(/,\s*/)&.[](1)
   end
 
   def generate_alternate_id
@@ -29,9 +29,5 @@ class TripPlan < ActiveRecord::Base
       self.alternate_id = SecureRandom.hex
       break unless self.class.exists?(alternate_id: alternate_id)
     end
-  end
-
-  def populate_weather
-    UpdateWeatherForecastJob.perform_now(self)
   end
 end

@@ -65,6 +65,7 @@
           %td= md_line trip_plan.managing_agency
         %tr
           %td{ colspan: 2 }
+
       - if trip_plan.big_picture_planning.present?
         %thead
           %tr
@@ -74,36 +75,13 @@
             %td{ colspan: 2 }= md trip_plan.big_picture_planning
           %tr
             %td{ colspan: 2 }
-      - if trip_plan.trip_days.any?
-        - trip_plan.trip_days.order(:date).each.with_index do |trip_day, index|
-          %thead
-            %tr
-              %th{ colspan: 2 } Planned Itinerary - Day #{index + 1}/#{trip_plan.trip_days.count} - #{trip_day.date.strftime('%b %e')}
-          %tbody
-            %tr
-              %td Planned Start:
-              %td= trip_day.planned_start
-            %tr
-              %td Planned Finish:
-              %td= trip_day.planned_finish
-            %tr
-              %td Daylight:
-              %td= trip_day.daylight
-            %tr
-              %td Moonlight:
-              %td= trip_day.moonlight
-            %tr
-              %td Water Availability:
-              %td= trip_day.water_availability
-            %tr
-              %td Hammock trees:
-              %td= trip_day.hammock_trees
-            %tr
-              %td Fishing:
-              %td= trip_day.fishing
-            %tr
-              %td Expected weather:
-              %td= trip_day.weather
-            %tr
-              %td Geocache(s):
-              %td= trip_day.geocaches
+
+      - trip_plan.trip_days.order(:date).each.with_index do |trip_day, index|
+        = render partial: 'trip_days/trip_day', locals: { trip_day: trip_day, index: index }
+
+      %tbody
+        %tr
+          %td{ colspan: 2 }
+            = link_to new_trip_plan_trip_day_path(trip_plan), class: 'btn btn-info' do
+              %i.fa.fa-fw.fa-plus
+              Add one more day to the itinerary

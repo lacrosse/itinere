@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :trip_plans
+  has_many :trip_days, through: :trip_plans
 end
