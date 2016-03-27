@@ -3,22 +3,26 @@ module ApplicationHelper
     content_for(:title, text)
   end
 
-  def footer_js
-    content_for(:footer_js, yield)
-  end
-
   def md(text)
-    Redcarpet::Markdown.new(
-      REDCARPET,
-      autolink: true
-    ).render(text || '').html_safe
+    if text.present?
+      Redcarpet::Markdown.new(
+        REDCARPET,
+        autolink: true
+      ).render(text).html_safe
+    else
+      ''
+    end
   end
 
   def md_line(text)
-    Redcarpet::Markdown.new(
-      REDCARPET_LINE,
-      autolink: true
-    ).render(text || '').html_safe
+    if text.present?
+      Redcarpet::Markdown.new(
+        REDCARPET_LINE,
+        autolink: true
+      ).render(text).html_safe
+    else
+      ''
+    end
   end
 
   def flash_messages

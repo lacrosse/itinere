@@ -7,7 +7,7 @@ class UpdateWeatherForecastJob < ActiveJob::Base
     trip_day = TripDay.find(trip_day_id)
     trip_plan = trip_day.trip_plan
 
-    if (match_data = trip_plan.start_location.match(/\A(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)\z/))
+    if (match_data = trip_plan.start_location&.match(/\A(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)\z/))
       lat, lon = match_data[1..2]
 
       time = "#{trip_day.date}T00:00:00"
