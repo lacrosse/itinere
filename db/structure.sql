@@ -43,6 +43,45 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: trip_days; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE trip_days (
+    id integer NOT NULL,
+    trip_plan_id integer,
+    date date,
+    planned_start character varying,
+    planned_finish character varying,
+    daylight character varying,
+    moonlight character varying,
+    water_availability character varying,
+    hammock_trees character varying,
+    fishing character varying,
+    weather character varying,
+    geocaches character varying
+);
+
+
+--
+-- Name: trip_days_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE trip_days_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: trip_days_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE trip_days_id_seq OWNED BY trip_days.id;
+
+
+--
 -- Name: trip_plans; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -65,7 +104,12 @@ CREATE TABLE trip_plans (
     updated_at timestamp without time zone NOT NULL,
     alternate_id character varying NOT NULL,
     published boolean DEFAULT false NOT NULL,
-    big_picture_planning text
+    big_picture_planning text,
+    unit integer DEFAULT 0 NOT NULL,
+    start_location character varying,
+    finish_location character varying,
+    start_location_description character varying,
+    finish_location_description character varying
 );
 
 
@@ -132,6 +176,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY trip_days ALTER COLUMN id SET DEFAULT nextval('trip_days_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY trip_plans ALTER COLUMN id SET DEFAULT nextval('trip_plans_id_seq'::regclass);
 
 
@@ -140,6 +191,14 @@ ALTER TABLE ONLY trip_plans ALTER COLUMN id SET DEFAULT nextval('trip_plans_id_s
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: trip_days_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY trip_days
+    ADD CONSTRAINT trip_days_pkey PRIMARY KEY (id);
 
 
 --
@@ -205,4 +264,10 @@ INSERT INTO schema_migrations (version) VALUES ('20160325215201');
 INSERT INTO schema_migrations (version) VALUES ('20160325220207');
 
 INSERT INTO schema_migrations (version) VALUES ('20160326214934');
+
+INSERT INTO schema_migrations (version) VALUES ('20160327001056');
+
+INSERT INTO schema_migrations (version) VALUES ('20160327013329');
+
+INSERT INTO schema_migrations (version) VALUES ('20160327015423');
 

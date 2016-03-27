@@ -31,6 +31,8 @@ en:
 
         who_is_going: Who's Going
         contacts: Contact(s)
+        start_location: Start Location
+        finish_location: Finish Location
         planned_route_url: Planned Route
         transportation: Transportation
         expected_departure: Expected Departure

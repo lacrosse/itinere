@@ -16,10 +16,22 @@
           %td= md_line trip_plan.contacts
         %tr
           %td Start Location:
-          %td todo
+          %td
+            = md_line trip_plan.start_location_description
+            - if [trip_plan.start_location_lat, trip_plan.start_location_lon].all?(&:present?)
+              %br
+              Lat: #{trip_plan.start_location_lat}
+              %br
+              Lon: #{trip_plan.start_location_lon}
         %tr
           %td Finish Location:
-          %td todo
+          %td
+            = md_line trip_plan.finish_location_description
+            - if [trip_plan.finish_location_lat, trip_plan.finish_location_lon].all?(&:present?)
+              %br
+              %p Lat: #{trip_plan.finish_location_lat}
+              %br
+              %p Lon: #{trip_plan.finish_location_lon}
         %tr
           %td Planned Route:
           %td= md_line trip_plan.planned_route_url
@@ -60,3 +72,38 @@
         %tbody
           %tr
             %td{ colspan: 2 }= md trip_plan.big_picture_planning
+          %tr
+            %td{ colspan: 2 }
+      - if trip_plan.trip_days.any?
+        - trip_plan.trip_days.order(:date).each.with_index do |trip_day, index|
+          %thead
+            %tr
+              %th{ colspan: 2 } Planned Itinerary - Day #{index + 1}/#{trip_plan.trip_days.count} - #{trip_day.date.strftime('%b %e')}
+          %tbody
+            %tr
+              %td Planned Start:
+              %td= trip_day.planned_start
+            %tr
+              %td Planned Finish:
+              %td= trip_day.planned_finish
+            %tr
+              %td Daylight:
+              %td= trip_day.daylight
+            %tr
+              %td Moonlight:
+              %td= trip_day.moonlight
+            %tr
+              %td Water Availability:
+              %td= trip_day.water_availability
+            %tr
+              %td Hammock trees:
+              %td= trip_day.hammock_trees
+            %tr
+              %td Fishing:
+              %td= trip_day.fishing
+            %tr
+              %td Expected weather:
+              %td= trip_day.weather
+            %tr
+              %td Geocache(s):
+              %td= trip_day.geocaches

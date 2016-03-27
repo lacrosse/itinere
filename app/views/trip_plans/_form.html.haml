@@ -6,14 +6,18 @@
 .well
   = form_for @trip_plan, html: { class: 'form-horizontal' } do |f|
     %fieldset
-      %legend Title
+      %legend Basic
       .form-group
-        .col-lg-12
+        = f.label :title, class: 'col-lg-2 control-label'
+        .col-lg-10
           = f.text_field :title, placeholder: 'Across the Universe', class: 'form-control'
           .checkbox
             = f.label :published do
               = f.check_box :published
               Published?
+      .form-group
+        = f.label :unit, class: 'col-lg-2 control-label'
+        .col-lg-2= f.select :unit, TripPlan.units.map { |k, _v| [k, k] }, { include_blank: false }, class: 'form-control'
     .alert.alert-info
       This form supports Markdown. You can insert links and emphasize text!
     %fieldset
@@ -24,6 +28,14 @@
       .form-group
         = f.label :contacts, class: 'col-lg-2 control-label'
         .col-lg-10= f.text_field :contacts, placeholder: 'Abby email@email.com', class: 'form-control'
+      .form-group
+        = f.label :start_location, class: 'col-lg-2 control-label'
+        .col-lg-2= f.text_field :start_location, placeholder: '-36.52385, 148.26419', class: 'form-control'
+        .col-lg-8= f.text_field :start_location_description, placeholder: 'Car park 5.5km past the Thredbo Village turn-off.', class: 'form-control'
+      .form-group
+        = f.label :finish_location, class: 'col-lg-2 control-label'
+        .col-lg-2= f.text_field :finish_location, placeholder: '-37.62412, 148.33154', class: 'form-control'
+        .col-lg-8= f.text_field :finish_location_description, placeholder: 'About 13 miles further along the Australian Alps Track.', class: 'form-control'
       .form-group
         = f.label :planned_route_url, class: 'col-lg-2 control-label'
         .col-lg-10= f.text_field :planned_route_url, placeholder: 'https://gaiagps.com/datasummary/track/73ba5421-0bde-4c54-beaf-e695807c5c65', class: 'form-control'
