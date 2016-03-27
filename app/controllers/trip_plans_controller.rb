@@ -9,6 +9,8 @@ class TripPlansController < ApplicationController
   end
 
   def show
+    @editable = true
+
     respond_to do |format|
       format.html
       format.pdf do

@@ -5,13 +5,15 @@
       Day #{index + 1}/#{trip_day.trip_plan.trip_days.count} -
       #{trip_day.date.strftime('%b %e')}
 
-      .btn-group.pull-right
-        = link_to edit_trip_plan_trip_day_path(trip_plan_id: trip_day.trip_plan_id, id: trip_day.id), class: 'btn btn-info btn-xs' do
-          %i.fa.fa-fw.fa-pencil-square-o
-          Edit
-        = link_to trip_plan_trip_day_path(trip_plan_id: trip_day.trip_plan_id, id: trip_day.id), class: 'btn btn-primary btn-xs', method: :delete, data: { confirm: 'Are you sure?' } do
-          %i.fa.fa-fw.fa-trash
-          Delete
+      - if @editable
+        .btn-group.pull-right
+          = link_to edit_trip_plan_trip_day_path(trip_plan_id: trip_day.trip_plan_id, id: trip_day.id), class: 'btn btn-info btn-xs' do
+            %i.fa.fa-fw.fa-pencil-square-o
+            Edit
+          = link_to trip_plan_trip_day_path(trip_plan_id: trip_day.trip_plan_id, id: trip_day.id), class: 'btn btn-primary btn-xs', method: :delete, data: { confirm: 'Are you sure?' } do
+            %i.fa.fa-fw.fa-trash
+            Delete
+
 %tbody
   %tr
     %td Planned Start:
