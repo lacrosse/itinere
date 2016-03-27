@@ -24,5 +24,7 @@ module Itinere
     config.active_record.raise_in_transactional_callbacks = true
 
     config.active_record.schema_format = :sql
+
+    config.x.populate_weather = true
   end
 end

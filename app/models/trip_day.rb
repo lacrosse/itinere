@@ -3,7 +3,7 @@ class TripDay < ActiveRecord::Base
 
   validates :date, presence: true
 
-  after_save :populate_weather
+  after_save :populate_weather, if: -> { Rails.application.config.x.populate_weather }
 
   def title
     "#{trip_plan.title} — #{date_was.strftime('%b %e')}"
