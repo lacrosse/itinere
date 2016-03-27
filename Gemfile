@@ -18,6 +18,8 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'font-awesome-sass'
 
+gem 'bootstrap-datepicker-rails'
+
 group :development, :test do
   gem 'byebug'
   gem 'pry-rails'
