@@ -15,9 +15,6 @@
             = f.label :published do
               = f.check_box :published
               Published?
-      .form-group
-        = f.label :unit, class: 'col-lg-2 control-label'
-        .col-lg-2= f.select :unit, TripPlan.units.map { |k, _v| [k, k] }, { include_blank: false }, class: 'form-control'
     .alert.alert-info
       This form supports Markdown. You can insert links and emphasize text!
     %fieldset

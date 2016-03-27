@@ -58,7 +58,7 @@ class TripPlansController < ApplicationController
   def trip_plan_params
     params.require(:trip_plan).permit(
       *%i(
-        title published unit
+        title published
 
         start_location start_location_description
         finish_location finish_location_description

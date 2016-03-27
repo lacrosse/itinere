@@ -105,7 +105,6 @@ CREATE TABLE trip_plans (
     alternate_id character varying NOT NULL,
     published boolean DEFAULT false NOT NULL,
     big_picture_planning text,
-    unit integer DEFAULT 0 NOT NULL,
     start_location character varying,
     finish_location character varying,
     start_location_description character varying,
@@ -270,4 +269,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160327001056');
 INSERT INTO schema_migrations (version) VALUES ('20160327013329');
 
 INSERT INTO schema_migrations (version) VALUES ('20160327015423');
+
+INSERT INTO schema_migrations (version) VALUES ('20160327092551');
 

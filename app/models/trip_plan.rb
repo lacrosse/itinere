@@ -2,12 +2,9 @@ class TripPlan < ActiveRecord::Base
   belongs_to :user
   has_many :trip_days, dependent: :destroy
 
-  enum unit: %w(metric imperial)
-
   validates :title, presence: true
 
   before_create :generate_alternate_id
-  before_save :populate_weather, if: :unit_changed?
 
   scope :published, -> { where published: true }
 
