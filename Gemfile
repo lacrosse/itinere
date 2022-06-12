@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 ruby File.read(".ruby-version").chomp
 
-gem 'rails', '4.2.6'
-gem 'pg', '~> 0.15'
+gem 'rails', '4.2.8'
+gem 'pg', '~> 0.18'
 
 gem 'devise'
 gem 'redcarpet'
